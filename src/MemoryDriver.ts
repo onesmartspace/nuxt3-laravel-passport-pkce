@@ -4,7 +4,7 @@ export default class MemoryDriver implements AuthStorage {
   private data: any;
 
   public getItem(key: string): any {
-    return this.data.hasOwnProperty(key) ? this.data[key] : null;
+    return this.data?.hasOwnProperty(key) ? this.data[key] : null;
   }
 
   public setItem(key: string, value: any): void {

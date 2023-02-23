@@ -19,7 +19,7 @@ class PassportAuth {
 
   constructor(config: AuthConfig) {
     this.config = config;
-    if (this.config.hasOwnProperty("storage")) {
+    if (this.config?.hasOwnProperty("storage")) {
       this.storage = this.config.storage;
       delete this.config.storage;
     } else {

@@ -1,6 +1,6 @@
 {
   "name": "@onesmartspace/nuxt3-laravel-passport-pkce",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A minimal Nuxt 3 module that allows to authenticate via Laravel Passport PKCE.",
   "author": {
     "name": "Ryan Weber",
