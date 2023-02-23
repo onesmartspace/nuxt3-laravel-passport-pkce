@@ -4,6 +4,7 @@ export interface AuthConfig {
     authorization_endpoint: string;
     token_endpoint: string;
     requested_scopes: string;
+    storage?: AuthStorage;
 }
 export interface AuthObject {
     [key: string]: any;

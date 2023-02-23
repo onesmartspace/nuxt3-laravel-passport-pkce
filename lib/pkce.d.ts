@@ -2,6 +2,7 @@ import { AuthConfig, AuthObject, AuthTokenResponse } from "./types";
 declare class PassportAuth {
     private codeVerifier;
     private config;
+    private storage;
     private state;
     constructor(config: AuthConfig);
     private getState;
