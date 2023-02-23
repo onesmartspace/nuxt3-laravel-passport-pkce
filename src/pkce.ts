@@ -1,6 +1,8 @@
 import sha256 from "crypto-js/sha256";
 import Base64 from "crypto-js/enc-base64";
 import WordArray from "crypto-js/lib-typedarrays";
+import MemoryDriver from "./MemoryDriver";
+
 import {
   AuthConfig,
   AuthObject,
@@ -12,10 +14,18 @@ import {
 class PassportAuth {
   private codeVerifier: string = "";
   private config: AuthConfig;
+  private storage: AuthStorage;
   private state: string = "";
 
   constructor(config: AuthConfig) {
     this.config = config;
+    if (this.config.hasOwnProperty("storage")) {
+      this.storage = this.config.storage;
+      delete this.config.storage;
+    } else {
+      this.storage =
+        typeof window === "undefined" ? new MemoryDriver() : localStorage;
+    }
   }
 
   private getState(explicit: string | null = null): string {
@@ -59,8 +69,8 @@ class PassportAuth {
     });
   }
 
-  private getStore(): null | AuthStorage {
-    return window ? localStorage : null;
+  private getStore(): AuthStorage {
+    return this.storage;
   }
 
   private randomStringFromStorage(key: string): string {
